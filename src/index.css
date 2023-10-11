@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Noah';
+    src: url('../assets/fonts/noah-regular.otf') format('truetype');
+  }
+  
+
+
+body {
+    font-family: 'Noah', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .side-bar {
+    position: sticky;
+    top: 0;
+  }

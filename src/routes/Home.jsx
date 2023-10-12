@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Popup from '../components/AnuncioPopup';
 
 /* import { Link} from 'react-router-dom'; */
 
@@ -8,7 +9,9 @@ import './styles/Home.css';
 
 
 import pointer from "../assets/icons/pointer-acordion.png"
-
+import facebookIcon from "../assets/icons/Facebook Circled.png"
+import instagramIcon from "../assets/icons/Instagram Circle.png"
+import linkedinIcon from "../assets/icons/LinkedIn.png"
 
   
 
@@ -35,12 +38,39 @@ const Home = () => {
       };
 
 
+      // Estado para controlar la visibilidad del Popup
+   const [showPopup, setShowPopup] = useState(false);
+
+   // Efecto para mostrar el Popup después de 5 segundos
+   useEffect(() => {
+     const popupTimer = setTimeout(() => {
+       setShowPopup(true);
+     }, 5000); // 5000 milisegundos (5 segundos)
+ 
+     // Limpieza del temporizador cuando se desmonta el componente
+     return () => {
+       clearTimeout(popupTimer);
+     };
+   }, []); // El segundo argumento, un array vacío, asegura que el efecto solo se ejecute una vez al montar el componente.
+ 
+   // Función para cerrar el Popup
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
+
+
     return(
         <div className='principal'>
+            {/* Mostrar el Popup si showPopup es verdadero */}
+            {showPopup && (
+            <Popup handleClosePopup={handleClosePopup} />
+            )}
+
             <header className='side-bar'>
                 <div className='sidebar-space'>
                     <div className='sidebar-logo'>
-                        <img src="https://s3.amazonaws.com/hypercarwash.com/recursos/logo-sidebar.png" alt="logo-hyper" />
+                        <img src="https://s3.amazonaws.com/hypercarwash.com/recursos/sidebar-logo.png" alt="logo-hyper" />
                     </div>
                     
 
@@ -204,6 +234,18 @@ const Home = () => {
 
             <footer className='footer-section'>
 
+                <div className='social-media-space'>
+                    <h3>Redes Sociales</h3>
+                    <div>
+                        <a href="https://www.facebook.com/carwashyper" target='__blank' ><img src={facebookIcon} alt="facebook" /></a>
+                        <a href="https://www.instagram.com/hyper_carwash/" target='__blank'><img src={instagramIcon} alt="instagram" /></a>
+                        <a href="#contacto" target='__blank' ><img src={linkedinIcon} alt="linkedin" /></a>
+                    </div>
+                </div>
+
+                <p>
+                    Todos los derechos reservados ©Hyper Car Wash, 2023
+                </p>
             </footer>
         </div>
     )

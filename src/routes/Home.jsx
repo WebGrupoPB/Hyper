@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Popup from '../components/AnuncioPopup';
+import Maps from '../components/Maps';
 
 /* import { Link} from 'react-router-dom'; */
 
@@ -13,11 +14,12 @@ import facebookIcon from "../assets/icons/Facebook Circled.png"
 import instagramIcon from "../assets/icons/Instagram Circle.png"
 import linkedinIcon from "../assets/icons/LinkedIn.png"
 
-  
+
+const facebookPageHyperUrl = 'https://www.facebook.com/carwashyper';
 
 const Home = () => {
 
-    const [showContent1, setShowContent1] = useState(false);
+    const [showContent1, setShowContent1] = useState(true);
     const [showContent2, setShowContent2] = useState(false);
     const [showContent3, setShowContent3] = useState(false);
 
@@ -63,9 +65,9 @@ const Home = () => {
     return(
         <div className='principal'>
             {/* Mostrar el Popup si showPopup es verdadero */}
-            {showPopup && (
+            {/* {showPopup && (
             <Popup handleClosePopup={handleClosePopup} />
-            )}
+            )} */}
 
             <header className='side-bar'>
                 <div className='sidebar-space'>
@@ -109,7 +111,11 @@ const Home = () => {
                             <div className='map-ubi-space'>
                                 <h2>Guatemala</h2>
                                 <div className='map-ubi'>
-
+                                    <Maps 
+                                        showContent1={showContent1}
+                                        showContent2={showContent2}
+                                        showContent3={showContent3}                                   
+                                    />
                                 </div>
                             </div>
 
@@ -122,15 +128,14 @@ const Home = () => {
                                                 <img src={pointer} alt="pointer" />
                                             </div>
                                         </div>
-
-                                        {showContent1 && (
-                                            <div className='acordion-content1'>
-                                                <p>
-                                                    Calzada Atanasio Tzul
-                                                    20-40, Zona 12
-                                                </p>
-                                            </div>
-                                        )}
+                                          
+                                        <div className={`acordion-content1 ${showContent1 ? 'open' : ''}`} >
+                                            <p>
+                                                Calzada Atanasio Tzul
+                                                20-40, Zona 12
+                                            </p>
+                                        </div>
+                                        
                                     </div>
                                     
                                     <div className='acordion-card'>
@@ -141,14 +146,13 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                        {showContent2 && (
-                                            <div className='acordion-content2'>
-                                                <p>
-                                                    Calzada Atanasio Tzul
-                                                    20-40, Zona 12
-                                                </p>
-                                            </div>
-                                        )}
+                                        
+                                        <div className={`acordion-content2 ${showContent2 ? 'open' : ''}`}>
+                                            <p>
+                                                23 Calle 20-90 zona 7, Villa Hermosa, San Miguel Petapa
+                                            </p>
+                                        </div>
+                                        
                                     </div>
 
                                     <div className='acordion-card'>
@@ -159,14 +163,13 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                        {showContent3 && (
-                                            <div className='acordion-content3'>
-                                                <p>
-                                                    Calzada Atanasio Tzul
-                                                    20-40, Zona 12
-                                                </p>
-                                            </div>
-                                        )}
+                                        
+                                        <div className={`acordion-content3 ${showContent3 ? 'open' : ''}`}>
+                                            <p>
+                                                Km. 179.5 Santa Cruz Muluá, Retalhuleu
+                                            </p>
+                                        </div>
+                                        
                                     </div>
                                     
                                 </div>
@@ -224,8 +227,25 @@ const Home = () => {
                                 <h1>Facebook</h1>
                             </div>
                             
+                    
 
-                            <img src="https://s3.amazonaws.com/hypercarwash.com/recursos/facebook-screenshot.png" alt="" />
+                            <div
+                                key="uniqueKey"
+                                className="fb-page"
+                                data-href={facebookPageHyperUrl}
+                                data-tabs="timeline"
+                                style={{ width: '400px', height: '500px' }}
+                                data-small-header="true"
+                                data-adapt-container-width="true"
+                                data-hide-cover="false"
+                                data-show-facepile="false"
+                                >
+                                <blockquote cite={facebookPageHyperUrl} className="fb-xfbml-parse-ignore">
+                                    <a href={facebookPageHyperUrl}>Hyper Car Wash</a>
+                                </blockquote>
+                            </div>
+
+
                         </aside>
                     </div>
                     

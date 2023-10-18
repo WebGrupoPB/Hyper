@@ -17,6 +17,22 @@ import linkedinIcon from "../assets/icons/LinkedIn.png"
 
 const facebookPageHyperUrl = 'https://www.facebook.com/carwashyper';
 
+const facebookWidth =   window.innerWidth > 1999 ? "500" : 
+                        window.innerWidth > 1400 ? "300" : 
+                        window.innerWidth > 1000 ? "260" : 
+                        window.innerWidth > 950 ? "230" :
+                        window.innerWidth > 600 ? "200" :
+                        window.innerWidth > 320 ? "200" : "200";
+
+const facebookHeight =  window.innerWidth > 1999 ? "800" : 
+                        window.innerWidth > 1440 ? "550" : 
+                        window.innerWidth > 1024 ? "500" : 
+                        window.innerWidth > 950 ? "400" :
+                        window.innerWidth > 600 ? "400" :
+                        window.innerWidth > 320 ? "400" : "400";
+
+
+
 const Home = () => {
 
     const [showContent1, setShowContent1] = useState(true);
@@ -55,10 +71,34 @@ const Home = () => {
      };
    }, []); // El segundo argumento, un array vacío, asegura que el efecto solo se ejecute una vez al montar el componente.
  
+
+   const [showPopup1, setShowPopup1] = useState(false);
+    // Función para mostrar el Popup con num = 1
+  const showPopupOnClick = () => {
+    setShowPopup1(true);
+  };
+
    // Función para cerrar el Popup
   const handleClosePopup = () => {
     setShowPopup(false);
+    setShowPopup1(false);
   };
+
+  const [isPulsating, setIsPulsating] = useState(false);
+
+  // Función para alternar la animación
+  const togglePulsating = () => {
+    setIsPulsating((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(togglePulsating, 2000); // Cambia cada 2 segundos
+
+    // Limpia el interval cuando el componente se desmonta
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
 
 
@@ -66,8 +106,12 @@ const Home = () => {
         <div className='principal'>
             {/* Mostrar el Popup si showPopup es verdadero */}
             {/* {showPopup && (
-            <Popup handleClosePopup={handleClosePopup} />
+            <Popup handleClosePopup={handleClosePopup} num={0}/>
             )} */}
+
+            {showPopup1 && (
+            <Popup handleClosePopup={handleClosePopup} num={1}/>
+            )}
 
             <header className='side-bar'>
                 <div className='sidebar-space'>
@@ -182,8 +226,15 @@ const Home = () => {
                     <h1>Precios</h1>   
 
                     <div className='content'>
-                        <div className='fondo-content'></div>
-                        <div className='precios-content'></div>
+                        <div 
+                            className='fondo-content'
+                            onClick={showPopupOnClick}   
+                        ></div>
+
+                        <div 
+                            className={`precios-content ${isPulsating ? 'pulsate' : ''}`}
+                            onClick={showPopupOnClick}
+                        ></div>
                     </div>                         
                 </section>
 
@@ -234,9 +285,12 @@ const Home = () => {
                                 className="fb-page"
                                 data-href={facebookPageHyperUrl}
                                 data-tabs="timeline"
-                                style={{ width: '400px', height: '500px' }}
+                                /* data-width={"800px"}
+                                data-height={"900px"} */
+                                data-width={facebookWidth + "px"}
+                                data-height={facebookHeight + "px"}
                                 data-small-header="true"
-                                data-adapt-container-width="true"
+                                data-adapt-container-width="false"
                                 data-hide-cover="false"
                                 data-show-facepile="false"
                                 >

@@ -26,7 +26,7 @@ export default function SlidePromo({slideList}) {
           clickable: true,
         }} */
         autoplay={{
-            delay: 2500,
+            delay: 6000,
             disableOnInteraction: false,
           }}
         modules={[EffectFade, Navigation, Pagination, Autoplay]}

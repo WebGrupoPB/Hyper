@@ -3,6 +3,7 @@ import React from 'react'
 import App from './App.jsx'
 import Home from './routes/Home.jsx'
 import Maps from './components/Maps.jsx'
+import Promo from './routes/Promo.jsx'
 
 
 import './index.css'
@@ -12,6 +13,7 @@ import {
    createBrowserRouter,
    RouterProvider,
  } from "react-router-dom";
+
  
  const router = createBrowserRouter([
    {
@@ -21,8 +23,8 @@ import {
    },
 
   {
-    path: "/map",
-    element: <Maps />,
+    path: "/promo",
+    element: <Promo />,
   },
 
  ]); 

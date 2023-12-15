@@ -1,0 +1,486 @@
+
+div.promo-body { 
+    width: 100%;
+    height: 100vh;
+}
+
+aside.top-slide {    
+    background-color: #E1071E;
+    width: 100%;
+    height: 5vh;
+
+    display: grid;
+    place-items: center;
+
+    p {
+        color: #FFF;
+        font-size: 1.33vw;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 1.5vh;
+
+        span {
+            font-weight: 800;
+        }
+    }
+}
+
+main.main-content {
+    /* background-color: blue; */
+    width: 100%;
+    height: 95vh;
+    margin-top: 0vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+
+    section.title-section { 
+        /* background-color: yellow; */
+        width: 100%;
+        height: 20vh;
+
+        display: grid;
+        place-items: center;
+
+        h2 { 
+            color: #000;
+            /* font-family: Monument Extended; */
+            font-size: 3vw;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+
+            margin: 1vh auto;
+        }
+
+        h1 { 
+            color: #000;
+            /* font-family: Monument Extended; */
+            font-size: 3vw;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+
+            margin: 1vh auto;
+        }
+        
+    }
+
+    section.slideContent-section { 
+        /* background-color: green; */
+        width: 100%;
+        height: 75vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        aside.slideImages-area { 
+            /* background-color: red; */
+            width: 50vw;
+            height: 75vh;
+        }
+
+        aside.slideText-area { 
+            /* background-color: blue; */
+            width: 50vw;
+            height: 75vh;
+        }
+    }
+
+    
+}
+
+
+/*******************************************************
+                Slider de texto 
+*********************************************************/
+
+/* @mixin white-gradient {
+	background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+ */
+$animationSpeed: 40s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
+
+// Styling
+.slider {
+	background: transparent;
+	/* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125); */
+	height: 100%;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+    bottom: 6px;
+	width: 100%;
+	
+	&::before,
+	&::after {
+		/* @include white-gradient; */
+		content: "";
+		height: 100px;
+		position: absolute;
+		width: 200px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+	}
+	
+	.slide {
+		height: 100px;
+		width: 250px;
+	}
+}
+
+/*************** Pantallas tablet (768px) y tablet L (1024px) con orientacion vertical  *******************/
+@media (min-width: 750px) and (max-width: 1025px) and (orientation: portrait) {
+        
+    div.promo-body { 
+        width: 100%;
+        height: 100vh;
+    }
+
+    aside.top-slide {    
+        background-color: #E1071E;
+        width: 100%;
+        height: 5vh;
+
+        display: grid;
+        place-items: center;
+
+        p {
+            color: #FFF;
+            font-size: 3vw;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-top: 1.5vh;
+
+            span {
+                font-weight: 800;
+            }
+        }
+    }
+
+    main.main-content {
+        /* background-color: blue; */
+        width: 100%;
+        min-height: 115vh;
+        margin-top: 0vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        section.title-section { 
+            /* background-color: yellow; */
+            width: 100%;
+            height: 20vh;
+
+            display: grid;
+            place-items: center;
+
+            h2 { 
+                color: #000;
+                /* font-family: Monument Extended; */
+                font-size: 5vw;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                margin: .5vh auto;
+            }
+
+            h1 { 
+                color: #000;
+                /* font-family: Monument Extended; */
+                font-size: 5vw;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+
+                margin: .5vh auto;
+            }
+            
+        }
+
+        section.slideContent-section { 
+            /* background-color: green; */
+            width: 100%;
+            min-height: 75vh;
+
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+
+            aside.slideImages-area { 
+                background-color: red;
+                width: 100vw;
+                height: 60vh;
+            }
+
+            aside.slideText-area { 
+                /* background-color: blue; */
+                width: 100vw;
+                height: 60vh;
+            }
+        }
+
+        
+    }
+
+
+    /*******************************************************
+                    Slider de texto 
+    *********************************************************/
+
+    /* @mixin white-gradient {
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    }
+    */
+    $animationSpeed: 40s;
+
+    // Animation
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 7))}
+    }
+
+
+    // Styling
+    .slider {
+        background: transparent;
+        /* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125); */
+        height: 100%;
+        margin: auto;
+        overflow:hidden;
+        position: relative;
+        bottom: 6px;
+        width: 100%;
+        
+        &::before,
+        &::after {
+            /* @include white-gradient; */
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 200px;
+            z-index: 2;
+        }
+        
+        &::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        &::before {
+            left: 0;
+            top: 0;
+        }
+        
+        .slide-track {
+            animation: scroll $animationSpeed linear infinite;
+            display: flex;
+            width: calc(250px * 14);
+        }
+        
+        .slide {
+            height: 100px;
+            width: 250px;
+        }
+    }
+} 
+
+/*************** Pantallas Movil con orientacion vertical  *******************/
+@media (max-width: 749px) and (orientation: portrait) {
+        
+    div.promo-body { 
+        width: 100%;
+        height: 100vh;
+    }
+
+    aside.top-slide {    
+        background-color: #E1071E;
+        width: 100%;
+        height: 5vh;
+
+        display: grid;
+        place-items: center;
+
+        p {
+            color: #FFF;
+            font-size: 5vw;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-top: 1.5vh;
+
+            span {
+                font-weight: 800;
+            }
+        }
+    }
+
+    main.main-content {
+        /* background-color: blue; */
+        width: 100%;
+        min-height: 120vh;
+        margin-top: 0vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        section.title-section { 
+            /* background-color: yellow; */
+            width: 100%;
+            height: 20vh;
+            padding-bottom: 2vh;
+            margin-bottom: 2vh !important;
+
+            display: grid;
+            place-items: center;
+
+            h2 { 
+                color: #000;
+                /* font-family: Monument Extended; */
+                font-size: 7vw;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: center;
+                text-wrap: pretty;
+
+                margin: .5vh auto;
+            }
+
+            h1 { 
+                color: #000;
+                /* font-family: Monument Extended; */
+                font-size: 7vw;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+
+                margin: .5vh auto;
+            }
+            
+        }
+
+        section.slideContent-section { 
+            /* background-color: green; */
+            width: 100%;
+            min-height: 75vh;
+
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+
+            aside.slideImages-area { 
+                /* background-color: red; */
+                width: 100vw;
+                height: 60vh;
+            }
+
+            aside.slideText-area { 
+                /* background-color: blue; */
+                width: 100vw;
+                height: 60vh;
+            }
+        }
+
+        
+    }
+
+
+    /*******************************************************
+                    Slider de texto 
+    *********************************************************/
+
+    /* @mixin white-gradient {
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    }
+    */
+    $animationSpeed: 40s;
+
+    // Animation
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 7))}
+    }
+
+
+    // Styling
+    .slider {
+        background: transparent;
+        /* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125); */
+        height: 100%;
+        margin: auto;
+        overflow:hidden;
+        position: relative;
+        bottom: 6px;
+        width: 100%;
+        
+        &::before,
+        &::after {
+            /* @include white-gradient; */
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 200px;
+            z-index: 2;
+        }
+        
+        &::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        &::before {
+            left: 0;
+            top: 0;
+        }
+        
+        .slide-track {
+            animation: scroll $animationSpeed linear infinite;
+            display: flex;
+            width: calc(250px * 14);
+        }
+        
+        .slide {
+            height: 100px;
+            width: 250px;
+        }
+    }
+} 
+

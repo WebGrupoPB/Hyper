@@ -126,6 +126,7 @@ const Home = () => {
                         <a href="#ubicaciones">Ubicaciones</a>
                         <a href="#precios">Precios</a>
                         <a href="#contacto">Contacto</a>
+                        <a href="/promo">Promoción</a>
                     </div>
                 </div>
                 
